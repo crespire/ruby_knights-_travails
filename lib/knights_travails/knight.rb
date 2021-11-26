@@ -11,6 +11,7 @@ module KnightsTravails
     private
 
     def find_al_coords(input)
+      # Takes an array of length 2 input with two integers
       return nil unless input&.length == 2
       return nil unless input&.reduce(:+).between?(2, 16)
 
@@ -23,7 +24,7 @@ module KnightsTravails
     end
 
     def find_array_coords(input)
-
+      # Takes a string of length 2 and converts it to an array
     end
 
     def valid_moves(node = @current_cell)
