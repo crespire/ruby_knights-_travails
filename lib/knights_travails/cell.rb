@@ -5,7 +5,7 @@ module KnightsTravails
       @piece = nil
     end
 
-    def occupied?
+    def empty?
       @piece.nil?
     end
   end
