@@ -14,7 +14,7 @@ module KnightsTravails
         number.each { |n|
           @board["#{l}#{n}".to_sym] = Cell.new("#{l}#{n}")
         }
-      }    
+      }
     end
   end
 end
