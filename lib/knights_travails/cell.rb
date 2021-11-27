@@ -5,10 +5,15 @@ module KnightsTravails
     def initialize(name)
       @name = name
       @piece = nil
+      @neighbours = []
     end
 
     def empty?
       @piece.nil?
+    end
+
+    def add_neighbour(node)
+      @neighbours << node
     end
   end
 end

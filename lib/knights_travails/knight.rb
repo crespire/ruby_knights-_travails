@@ -5,13 +5,20 @@ module KnightsTravails
     end
 
     def knight_moves(orig, term)
-      valid = valid_moves(orig)
+      valid = valid_moves
+      # BFS to terminal node from origin
     end
 
-    def valid_moves(node = @current_cell)
+    def valid_moves
       # This method should generate a graph with all the adjacencies.
       # We treat all neighbors of this node as valid moves.
-      
+      graph = KnightsTravails::Board.new
+
+      graph.board.each do | node |
+        # For this node, add all valid neighbours
+      end
+
+      # Return the graph with all the node neighbours filled in.
     end
 
     private
