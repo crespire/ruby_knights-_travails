@@ -14,8 +14,11 @@ module KnightsTravails
       # We treat all neighbors of this node as valid moves.
       graph = KnightsTravails::Board.new
 
-      graph.board.each do | node |
-        # For this node, add all valid neighbours
+      # For each node, add all valid neighbours to neighbors.
+      graph.board.each do |node|
+        # For each cardinal direction, check if direction +2 is in bounds
+        # If +2 direction is in bound, check if L or R is in bounds.
+        #   add neighbour if in bounds
       end
 
       # Return the graph with all the node neighbours filled in.
