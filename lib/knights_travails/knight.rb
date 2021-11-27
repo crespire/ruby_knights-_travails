@@ -9,11 +9,9 @@ module KnightsTravails
     end
 
     def valid_moves(node = @current_cell)
-      # This method should generate an edge list from a given node.
-      # We can just keep calling this, so this method should just return the
-      # set of edges that are next.
+      # This method should generate a graph with all the adjacencies.
+      # We treat all neighbors of this node as valid moves.
       
-
     end
 
     private
