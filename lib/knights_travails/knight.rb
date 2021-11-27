@@ -13,7 +13,7 @@ module KnightsTravails
     def find_al_coords(input)
       # Takes an array of length 2 input with two integers
       return nil unless input&.length == 2
-      return nil unless input&.reduce(:+).between?(2, 16)
+      return nil unless input&.reduce(:+)&.between?(2, 16)
 
       letter = %w[a b c d e f g h]
       number = %w[1 2 3 4 5 6 7 8]
@@ -25,6 +25,21 @@ module KnightsTravails
 
     def find_array_coords(input)
       # Takes a string of length 2 and converts it to an array
+      return nil unless input&.length == 2
+
+      array_form = input.chars
+      lookup = {
+        'a' => 1,
+        'b' => 2,
+        'c' => 3,
+        'e' => 4,
+        'd' => 5,
+        'f' => 6,
+        'g' => 7,
+        'h' => 8
+      }
+
+      output = [lookuo[array_form[0]], array_form[1].to_i - 1]
     end
 
     def valid_moves(node = @current_cell)
