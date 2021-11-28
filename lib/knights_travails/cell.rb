@@ -1,6 +1,6 @@
 module KnightsTravails
   class Cell
-    attr_accessor :name
+    attr_accessor :name, :neighbours
 
     def initialize(name)
       @name = name

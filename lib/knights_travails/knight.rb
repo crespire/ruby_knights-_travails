@@ -6,16 +6,47 @@ module KnightsTravails
       @current_cell = cell
     end
 
-    def knight_moves(orig, term)
-      valid = valid_moves
-      # BFS to terminal node from origin
+    def knight_moves(orig = @current_cell, term = nil)
+      board = valid_moves
+
+      bfs_info = {}
+      board.board.each do |node|
+        bfs_info[node.name] = { distance: nil, predecessor: nil }
+      end
+
+      queue = []
+      queue.push(orig)
+      distance = 0
+      until queue.empty?
+        distance += 1
+        current = board.find(queue.shift)
+        current.neighbours.each do |name|
+          next unless bfs_info[name][:distance].nil?
+
+          bfs_info[name][:distance] = distance
+          bfs_info[name][:predecessor] = current.name
+          queue << name
+        end
+
+        break if queue.include?(term)
+      end
+
+      bfs_info.each do |k, v|
+        puts "#{k} -> #{v}"
+      end
+
+      output = []
+      path_current = term
+      until path_current == orig
+        output << path_current
+        path_current = bfs_info[path_current][:predecessor]
+      end
+      output << orig
+      output.reverse
     end
 
     def valid_moves(graph = KnightsTravails::Board.new)
-      # This method should generate a graph with all the adjacencies.
-      # We treat all neighbors of this node as valid moves.
-
-      # For each node, add all valid neighbours to neighbors.
+      # For each node, add all valid neighbours.
       graph.board.each do |node|
         coords_arr = coords_to_arr(node.name)
 
@@ -26,7 +57,7 @@ module KnightsTravails
           right = [ns_right, north]
           left = [ns_left, north]
           node.add_neighbour(coords_to_alg(left)) if ns_left.between?(1, 8)
-          node.add_neighbour(coords_to_alg(right)) if ns_right.between?(1, 8)          
+          node.add_neighbour(coords_to_alg(right)) if ns_right.between?(1, 8)
         end
 
         east = coords_arr[0] + 2
@@ -96,3 +127,7 @@ module KnightsTravails
     end
   end
 end
+
+
+knight = KnightsTravails::Knight.new('d4')
+knight.knight_moves('a1', 'd4')
