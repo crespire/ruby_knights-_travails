@@ -1,4 +1,6 @@
 module KnightsTravails
+  require_relative 'board'
+
   class Knight
     def initialize(cell)
       @current_cell = cell
@@ -9,22 +11,57 @@ module KnightsTravails
       # BFS to terminal node from origin
     end
 
-    def valid_moves
+    def valid_moves(graph = KnightsTravails::Board.new)
       # This method should generate a graph with all the adjacencies.
       # We treat all neighbors of this node as valid moves.
-      graph = KnightsTravails::Board.new
 
       # For each node, add all valid neighbours to neighbors.
       graph.board.each do |node|
-        # For each cardinal direction, check if direction +2 is in bounds
-        # If +2 direction is in bound, check if L or R is in bounds.
-        #   add neighbour if in bounds
+        coords_arr = coords_to_arr(node.name)
+
+        north = coords_arr[1] + 2
+        if north.between?(1, 8)
+          ns_right = coords_arr[0] + 1
+          ns_left = coords_arr[0] - 1
+          right = [ns_right, north]
+          left = [ns_left, north]
+          node.add_neighbour(graph.find(coords_to_alg(right))) if ns_right.between?(1, 8)
+          node.add_neighbour(graph.find(coords_to_alg(left))) if ns_left.between?(1, 8)
+        end
+
+        east = coords_arr[0] + 2
+        if east.between?(1, 8)
+          ew_up = coords_arr[1] + 1
+          ew_down = coords_arr[1] - 1
+          up = [east, ew_up]
+          down = [east, ew_down]
+          node.add_neighbour(graph.find(coords_to_alg(up))) if ew_up.between?(1, 8)
+          node.add_neighbour(graph.find(coords_to_alg(down))) if ew_down.between?(1, 8)
+        end
+
+        south = coords_arr[1] - 2
+        if south.between?(1, 8)
+          ns_right = coords_arr[0] + 1
+          ns_left = coords_arr[0] - 1
+          right = [ns_right, south]
+          left = [ns_left, south]
+          node.add_neighbour(graph.find(coords_to_alg(right))) if ns_right.between?(1, 8)
+          node.add_neighbour(graph.find(coords_to_alg(left))) if ns_left.between?(1, 8)
+        end
+
+        west = coords_arr[0] - 2
+        if west.between?(1, 8)
+          ew_up = coords_arr[1] + 1
+          ew_down = coords_arr[1] - 1
+          up = [west, ew_up]
+          down = [west, ew_down]
+          node.add_neighbour(graph.find(coords_to_alg(up))) if ew_up.between?(1, 8)
+          node.add_neighbour(graph.find(coords_to_alg(down))) if ew_down.between?(1, 8)
+        end
       end
 
-      # Return the graph with all the node neighbours filled in.
+      graph
     end
-
-    private
 
     def coords_to_alg(input)
       # Takes an array of length 2 input with two integers
