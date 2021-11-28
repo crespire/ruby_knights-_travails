@@ -18,7 +18,6 @@ module KnightsTravails
       queue.push(orig)
       distance = 0
       until queue.empty?
-        distance += 1
         current = board.find(queue.shift)
         current.neighbours.each do |name|
           next unless bfs_info[name][:distance].nil?
@@ -26,6 +25,7 @@ module KnightsTravails
           bfs_info[name][:distance] = distance
           bfs_info[name][:predecessor] = current.name
           queue << name
+          distance += 1
         end
 
         break if queue.include?(term)
