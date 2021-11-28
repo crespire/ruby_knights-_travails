@@ -14,3 +14,7 @@ def knight_moves(origin, terminal)
 
   nil
 end
+
+knight_moves('d4', 'e3')
+knight_moves('c2', 'h6')
+knight_moves('a1', 'h8')
