@@ -19,20 +19,20 @@ module KnightsTravails
       distance = 0
       until queue.empty?
         current = board.find(queue.shift)
+        if bfs_info[current.name][:distance].nil?
+          bfs_info[current.name][:distance] = distance
+        else
+          distance = bfs_info[current.name][:distance]
+        end
         current.neighbours.each do |name|
           next unless bfs_info[name][:distance].nil?
 
-          bfs_info[name][:distance] = distance
+          bfs_info[name][:distance] = distance + 1
           bfs_info[name][:predecessor] = current.name
           queue << name
-          distance += 1
         end
 
         break if queue.include?(term)
-      end
-
-      bfs_info.each do |k, v|
-        puts "#{k} -> #{v}"
       end
 
       output = []
@@ -130,4 +130,4 @@ end
 
 
 knight = KnightsTravails::Knight.new('d4')
-knight.knight_moves('a1', 'd4')
+p knight.knight_moves('a1', 'd4')
