@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KnightsTravails
   class Board
     attr_accessor :board
@@ -16,7 +18,7 @@ module KnightsTravails
     end
 
     def find(value)
-      @board.each { | node | return node if node.name == value }
+      @board.each { |node| return node if node.name == value }
     end
   end
 end

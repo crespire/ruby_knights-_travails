@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module KnightsTravails
   class Cell
     attr_accessor :name, :neighbours
