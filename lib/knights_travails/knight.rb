@@ -25,8 +25,8 @@ module KnightsTravails
           ns_left = coords_arr[0] - 1
           right = [ns_right, north]
           left = [ns_left, north]
-          node.add_neighbour(graph.find(coords_to_alg(right))) if ns_right.between?(1, 8)
-          node.add_neighbour(graph.find(coords_to_alg(left))) if ns_left.between?(1, 8)
+          node.add_neighbour(coords_to_alg(left)) if ns_left.between?(1, 8)
+          node.add_neighbour(coords_to_alg(right)) if ns_right.between?(1, 8)          
         end
 
         east = coords_arr[0] + 2
@@ -35,8 +35,8 @@ module KnightsTravails
           ew_down = coords_arr[1] - 1
           up = [east, ew_up]
           down = [east, ew_down]
-          node.add_neighbour(graph.find(coords_to_alg(up))) if ew_up.between?(1, 8)
-          node.add_neighbour(graph.find(coords_to_alg(down))) if ew_down.between?(1, 8)
+          node.add_neighbour(coords_to_alg(up)) if ew_up.between?(1, 8)
+          node.add_neighbour(coords_to_alg(down)) if ew_down.between?(1, 8)
         end
 
         south = coords_arr[1] - 2
@@ -45,8 +45,8 @@ module KnightsTravails
           ns_left = coords_arr[0] - 1
           right = [ns_right, south]
           left = [ns_left, south]
-          node.add_neighbour(graph.find(coords_to_alg(right))) if ns_right.between?(1, 8)
-          node.add_neighbour(graph.find(coords_to_alg(left))) if ns_left.between?(1, 8)
+          node.add_neighbour(coords_to_alg(right)) if ns_right.between?(1, 8)
+          node.add_neighbour(coords_to_alg(left)) if ns_left.between?(1, 8)
         end
 
         west = coords_arr[0] - 2
@@ -55,8 +55,8 @@ module KnightsTravails
           ew_down = coords_arr[1] - 1
           up = [west, ew_up]
           down = [west, ew_down]
-          node.add_neighbour(graph.find(coords_to_alg(up))) if ew_up.between?(1, 8)
-          node.add_neighbour(graph.find(coords_to_alg(down))) if ew_down.between?(1, 8)
+          node.add_neighbour(coords_to_alg(down)) if ew_down.between?(1, 8)
+          node.add_neighbour(coords_to_alg(up)) if ew_up.between?(1, 8)
         end
       end
 
@@ -85,8 +85,8 @@ module KnightsTravails
         'a' => 1,
         'b' => 2,
         'c' => 3,
-        'e' => 4,
-        'd' => 5,
+        'd' => 4,
+        'e' => 5,
         'f' => 6,
         'g' => 7,
         'h' => 8

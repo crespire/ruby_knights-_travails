@@ -12,8 +12,8 @@ module KnightsTravails
       @piece.nil?
     end
 
-    def add_neighbour(node)
-      @neighbours << node
+    def add_neighbour(name)
+      @neighbours << name
     end
   end
 end
