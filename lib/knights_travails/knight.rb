@@ -1,12 +1,10 @@
 module KnightsTravails
-  require_relative 'board'
-
   class Knight
     def initialize(cell)
       @current_cell = cell
     end
 
-    def knight_moves(orig = @current_cell, term = nil)
+    def find_path(orig = @current_cell, term = nil)
       board = valid_moves
 
       bfs_info = {}
@@ -127,7 +125,3 @@ module KnightsTravails
     end
   end
 end
-
-
-knight = KnightsTravails::Knight.new('d4')
-p knight.knight_moves('a1', 'd4')

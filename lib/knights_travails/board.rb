@@ -1,6 +1,4 @@
 module KnightsTravails
-  require_relative 'cell'
-
   class Board
     attr_accessor :board
 
