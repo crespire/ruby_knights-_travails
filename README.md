@@ -3,6 +3,7 @@
 This repository contains my solution for the [Knight's Travails lesson](https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-programming/lessons/knights-travails) from
 The Odin Project.
 
+# post-project reflection
 This project challenged me a lot in terms of the implementation side. I think
 conceptually, working with the graph was pretty straight forward, but I got
 stuck a few times on the actual implementation.
